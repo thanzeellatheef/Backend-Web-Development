@@ -1,12 +1,16 @@
-const postStore = require('../data/postStore');
-
-function listPosts() {
-  return postStore.posts;
-}
+const postRepository = require('../repositories/postRepository');
 
 function getPost(id) {
-  return postStore.posts.find((post) => post.id === Number(id)) || null;
+  return postRepository.findById(id);
 }
+
+function listPosts() {
+  return postRepository.findAll();
+}
+
+// function getPost(id) {
+//  return postRepository.findById(id);
+// }
 
 function createPost(fields) {
   if (!fields || !fields.title) {
